@@ -1,6 +1,6 @@
 
 
-const BASEURL = "assets/data/";
+const BASEURL = "/RecordStoreBar/assets/data/";
 let vinyl = null;
 let genre = null;
 
@@ -34,18 +34,20 @@ function ajaxCallBack(nazivFajla, rezultat) {
     })
 }
 window.onload = function () {
+    console.log('on load')
+
     let url = window.location.pathname;
-    if (url == "/" || url == "/webProgramiranjeSajt2-2023/index.html") {
+    console.log('currentUrl', url);
+
+    if (url == "/" || url == "/RecordStoreBar/index.html") {
+        console.log('da li ulazi ovde')
         ajaxCallBack("menu.json", function (rezultat) {
             ispisNavigacije(rezultat);
-
-
         })
 
         ajaxCallBack("indexPageVinyl.json", function (rezultat) {
             ispisCarouselProizvoda(rezultat);
             sacuvajLS("svicarouselProizvodi", rezultat);
-
         })
 
         ajaxCallBack("songs.json", function (rezultat) {
@@ -60,7 +62,7 @@ window.onload = function () {
         })
 
     }
-    if (url == "/webProgramiranjeSajt2-2023/author.html") {
+    if (url == "/RecordStoreBar/author.html") {
         ajaxCallBack("menu.json", function (rezultat) {
             ispisNavigacije(rezultat);
 
@@ -68,7 +70,7 @@ window.onload = function () {
         })
     }
 
-    if (url == "/webProgramiranjeSajt2-2023/contact.html") {
+    if (url == "/RecordStoreBar/contact.html") {
         ajaxCallBack("menu.json", function (rezultat) {
             ispisNavigacije(rezultat);
 
@@ -139,7 +141,7 @@ window.onload = function () {
 
     }
 
-    if (url == "/webProgramiranjeSajt2-2023/vinyl.html") {
+    if (url == "/RecordStoreBar/vinyl.html") {
 
         ajaxCallBack("menu.json", function (rezultat) {
             ispisNavigacije(rezultat);
@@ -488,7 +490,7 @@ function ispisFootera(niz) {
 
 
     html += `</ul>
-            <p class="copyright">RecordStore</p>
+            <p class="copyright">RecordStoreBar</p>
         </footer>`
 
     document.querySelector(".footer-basic").innerHTML = html;
