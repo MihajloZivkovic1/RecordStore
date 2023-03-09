@@ -60,6 +60,84 @@ window.onload = function () {
         })
 
     }
+    if (url == "/webProgramiranjeSajt2-2023/author.html") {
+        ajaxCallBack("menu.json", function (rezultat) {
+            ispisNavigacije(rezultat);
+
+
+        })
+    }
+
+    if (url == "/webProgramiranjeSajt2-2023/contact.html") {
+        ajaxCallBack("menu.json", function (rezultat) {
+            ispisNavigacije(rezultat);
+
+
+        })
+
+        const form = document.getElementById('form');
+        const username = document.getElementById('username');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+        const password2 = document.getElementById('password2');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+
+            checkInputs();
+        });
+
+        function checkInputs() {
+            const usernameValue = username.value.trim();
+            const emailValue = email.value.trim();
+            const passwordValue = password.value.trim();
+            const password2Value = password2.value.trim();
+
+            if (usernameValue === '') {
+                setErrorFor(username, 'Username cannot be blank');
+            } else {
+                setSuccessFor(username);
+            }
+            if (emailValue === '') {
+                setErrorFor(email, 'Email cannot be blank');
+            } else if (!isEmail(emailValue)) {
+                setErrorFor(email, 'Not a valid email, try:username@gmail.com');
+            } else {
+                setSuccessFor(email);
+            }
+            if (passwordValue === '') {
+                setErrorFor(password, 'Password cannot be blank');
+            } else {
+                setSuccessFor(password);
+            }
+
+            if (password2Value === '') {
+                setErrorFor(password2, 'Password2 cannot be blank');
+            } else if (passwordValue !== password2Value) {
+                setErrorFor(password2, 'Passwords does not match');
+            } else {
+                setSuccessFor(password2);
+            }
+
+
+
+        }
+        function setErrorFor(input, message) {
+            const formControl = input.parentElement;
+            const small = formControl.querySelector('small');
+            formControl.className = 'form-control error';
+            small.innerText = message;
+        }
+        function setSuccessFor(input) {
+            const formControl = input.parentElement;
+            formControl.className = 'form-control success';
+        }
+        function isEmail(email) {
+            return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+        }
+
+
+    }
 
     if (url == "/webProgramiranjeSajt2-2023/vinyl.html") {
 
@@ -360,7 +438,7 @@ function ispisCarouselProizvoda(niz) {
 
     for (let objVinyl of niz) {
         html +=
-            `<div class="owl-item mt-5  ">
+            `<div class="owl-item mt-5">
                     <div class="slide-product owl-carousel-item">
                         <div class="product-grid-item" data-id="${objVinyl.id}"></div>
                             <div class="product-wrapper">
@@ -402,7 +480,7 @@ function ispisCarouselProizvoda(niz) {
 function ispisFootera(niz) {
     let html = "";
     html += `<footer>
-            <div class="social"><a href="#"><i class="fa fa-instagram"></i></a><a href="#"><i class="fa fa-snapchat"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-facebook"></i></a></div>
+            <div class="social"><a href="WebProgramiranje2Documentation.pdf"><i class="fa-solid fa-file"></i></a><a href="#"><i class="fa-brands fa-square-instagram"></i></a><a href="#"><i class="fa-brands fa-square-snapchat"></i></a><a href="#"><i class="fa-brands fa-square-twitter"></i></a><a href="#"><i class="fa-brands fa-square-facebook"></i></a></div>
             <ul class="list-inline">`
     for (let ojbFooter of niz) {
         html += `<li class="list-inline-item"><a href="${ojbFooter.href}">${ojbFooter.naziv}</a></li>`
@@ -410,7 +488,7 @@ function ispisFootera(niz) {
 
 
     html += `</ul>
-            <p class="copyright">Ime</p>
+            <p class="copyright">RecordStore</p>
         </footer>`
 
     document.querySelector(".footer-basic").innerHTML = html;
@@ -420,7 +498,7 @@ function ispisVinyla(niz) {
     let html = "";
 
     for (let item of niz) {
-        html += `<article class="product gallery__type" data-id=${item.id}>
+        html += `<article class="product gallery__type " data-id=${item.id}>
                 <div class="product-container">
                      <img src="${item.image}" alt="${item.artist}" class="product-img img margin-left">
                   
