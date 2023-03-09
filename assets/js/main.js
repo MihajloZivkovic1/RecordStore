@@ -39,7 +39,7 @@ window.onload = function () {
     let url = window.location.pathname;
     console.log('currentUrl', url);
 
-    if (url == "/" || url == "/RecordStoreBar/index.html") {
+    if (url == "/" || url == "/RecordStore/index.html") {
         console.log('da li ulazi ovde')
         ajaxCallBack("menu.json", function (rezultat) {
             ispisNavigacije(rezultat);
@@ -62,7 +62,7 @@ window.onload = function () {
         })
 
     }
-    if (url == "/RecordStoreBar/author.html") {
+    if (url == "/RecordStore/author.html") {
         ajaxCallBack("menu.json", function (rezultat) {
             ispisNavigacije(rezultat);
 
@@ -70,7 +70,7 @@ window.onload = function () {
         })
     }
 
-    if (url == "/RecordStoreBar/contact.html") {
+    if (url == "/RecordStore/contact.html") {
         ajaxCallBack("menu.json", function (rezultat) {
             ispisNavigacije(rezultat);
 
@@ -141,7 +141,7 @@ window.onload = function () {
 
     }
 
-    if (url == "/RecordStoreBar/vinyl.html") {
+    if (url == "/RecordStore/vinyl.html") {
 
         ajaxCallBack("menu.json", function (rezultat) {
             ispisNavigacije(rezultat);
