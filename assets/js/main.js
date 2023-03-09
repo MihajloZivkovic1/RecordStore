@@ -1,6 +1,6 @@
 
 
-const BASEURL = "/RecordStoreBar/assets/data/";
+const BASEURL = "/RecordStore/assets/data/";
 let vinyl = null;
 let genre = null;
 
@@ -34,13 +34,13 @@ function ajaxCallBack(nazivFajla, rezultat) {
     })
 }
 window.onload = function () {
-    console.log('on load')
+
 
     let url = window.location.pathname;
-    console.log('currentUrl', url);
 
-    if (url == "/" || url == "/RecordStore/index.html") {
-        console.log('da li ulazi ovde')
+
+    if (url == "/" || url == "/RecordStore/" || url == '/RecordStore/index.html') {
+
         ajaxCallBack("menu.json", function (rezultat) {
             ispisNavigacije(rezultat);
         })
@@ -490,7 +490,7 @@ function ispisFootera(niz) {
 
 
     html += `</ul>
-            <p class="copyright">RecordStoreBar</p>
+            <p class="copyright">RecordStore</p>
         </footer>`
 
     document.querySelector(".footer-basic").innerHTML = html;
