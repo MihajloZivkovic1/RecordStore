@@ -1,9 +1,7 @@
 
-
 const BASEURL = "/RecordStore/assets/data/";
 let vinyl = null;
 let genre = null;
-
 function ajaxCallBack(nazivFajla, rezultat) {
     $.ajax({
         url: BASEURL + nazivFajla,
@@ -29,7 +27,7 @@ function ajaxCallBack(nazivFajla, rezultat) {
             } else {
                 msg = 'Uncaught Error.\n' + jqXHR.responseText;
             }
-            alert(msg);
+            confirm(msg);
         }
     })
 }
@@ -392,16 +390,6 @@ function ispisProizvodanaIndexStraniciAlbum(niz) {
     }
     document.querySelector(".ispis-Albuma").innerHTML = html;
 }
-
-
-
-
-
-
-
-
-
-
 function ispisNavigacije(niz) {
     let html = "";
 
